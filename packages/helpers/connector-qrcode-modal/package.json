@@ -1,0 +1,30 @@
+{
+  "name": "@bitizenwallet/connector-qrcode-modal",
+  "version": "1.8.0",
+  "description": "QR Code Modal for BitizenWallet Connector",
+  "source": "src/index.js",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "rm -rf dist && parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BitizenWallet/bitizenconnect-monorepo.git"
+  },
+  "author": "BitizenWallet",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/BitizenWallet/bitizenconnect-monorepo/issues"
+  },
+  "homepage": "https://github.com/BitizenWallet/bitizenconnect-monorepo#readme",
+  "alias": {
+    "process": false
+  },
+  "dependencies": {
+    "mobile-detect": "^1.4.5",
+    "qrcode": "^1.5.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
+}
