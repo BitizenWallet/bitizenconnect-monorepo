@@ -1,5 +1,5 @@
 import WalletConnect from "@walletconnect/client";
-import QRCodeModal from "@walletconnect/qrcode-modal";
+import QRCodeModal from "@bitizenwallet/connector-qrcode-modal";
 import HttpConnection from "@walletconnect/http-connection";
 import { payloadId, signingMethods, parsePersonalSign, getRpcUrl } from "@walletconnect/utils";
 import {
@@ -19,7 +19,7 @@ const HookedWalletSubprovider = require("web3-provider-engine/subproviders/hooke
 const NonceSubprovider = require("web3-provider-engine/subproviders/nonce-tracker");
 const SubscriptionsSubprovider = require("web3-provider-engine/subproviders/subscriptions");
 
-class WalletConnectProvider extends ProviderEngine {
+class BitizenConnectProvider extends ProviderEngine {
   public bridge = "https://bridge.walletconnect.org";
   public qrcode = true;
   public qrcodeModal = QRCodeModal;
@@ -440,4 +440,4 @@ class WalletConnectProvider extends ProviderEngine {
   }
 }
 
-export default WalletConnectProvider;
+export default BitizenConnectProvider;

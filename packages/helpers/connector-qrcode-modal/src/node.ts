@@ -1,9 +1,9 @@
 import QRCode from "qrcode";
 
-exports.open = function (uri) {
+export function open(uri: any) {
     QRCode.toString(uri, { type: "terminal" }).then(console.log);
 }
 
-exports.close = function () {
+export function close() {
 
 }

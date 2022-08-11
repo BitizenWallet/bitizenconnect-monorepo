@@ -1,7 +1,7 @@
 {
-  "name": "@walletconnect/web3-provider",
-  "version": "1.8.0",
-  "description": "Web3 Provider for WalletConnect",
+  "name": "@bitizenwallet/connector-web3-provider",
+  "version": "1.8.1",
+  "description": "Web3 Provider for Bitizen Connector",
   "scripts": {
     "clean": "rm -rf dist",
     "build:pre": "run-s clean",
@@ -23,8 +23,8 @@
     "cryptocurrency",
     "dapp"
   ],
-  "author": "WalletConnect, Inc. <walletconnect.com>",
-  "homepage": "https://github.com/WalletConnect/walletconnect-monorepo/",
+  "author": "Bitizen LTD <bitizen.org>",
+  "homepage": "https://github.com/BitizenWallet/bitizenconnect-monorepo/",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "browser": "dist/esm/index.js",
@@ -35,10 +35,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/walletconnect/walletconnect-monorepo.git"
-  },
-  "bugs": {
-    "url": "https://github.com/walletconnect/walletconnect-monorepo/issues"
+    "url": "git+https://github.com/BitizenWallet/bitizenconnect-monorepo.git"
   },
   "devDependencies": {
     "@babel/cli": "7.8.3",
@@ -63,12 +60,11 @@
     "webpack-cli": "3.3.10"
   },
   "dependencies": {
+    "@bitizenwallet/connector-qrcode-modal": "^1.8.2",
     "@walletconnect/client": "^1.8.0",
     "@walletconnect/http-connection": "^1.8.0",
-    "@walletconnect/qrcode-modal": "^1.8.0",
     "@walletconnect/types": "^1.8.0",
     "@walletconnect/utils": "^1.8.0",
     "web3-provider-engine": "16.0.1"
-  },
-  "gitHead": "165f7993c2acc907c653c02847fb02721052c6e7"
+  }
 }

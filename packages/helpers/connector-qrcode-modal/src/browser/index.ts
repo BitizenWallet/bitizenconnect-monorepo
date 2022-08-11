@@ -1,9 +1,10 @@
 import QRCode from "qrcode";
-import bigLogoSvg from "url:./assets/big_logo.svg";
-import logoSvg from "url:./assets/logo.svg";
-import closeSvg from "url:./assets/close.svg";
-import roboto from 'url:./assets/Roboto-Regular.ttf';
 import MobileDetect from "mobile-detect";
+
+import { BIG_LOGO_SVG_URL } from "./assets/big_logo";
+import { BITIZEN_LOGO_URL } from "./assets/logo";
+import { CLOSE_SVG_URL } from "./assets/close";
+import { ROBOTO_TTF_URL } from './assets/Roboto-Regular';
 
 const BZ_CONNECTOR_MODAL_ID = "bz-connector-modal";
 const BZ_UNIVERSAL_LINK = "https://bitizen.org/wallet/";
@@ -13,11 +14,11 @@ const isMobile = () => {
     return md.mobile() || md.tablet();
 }
 
-async function formatQRCodeImage(data) {
+async function formatQRCodeImage(data: any) {
     const qrContainer = document.createElement("div")
-    qrContainer.style = `display: flex;
+    qrContainer.setAttribute('style', `display: flex;
     justify-content: center;
-    align-items: center;`
+    align-items: center;`)
     let result = "";
     const dataString = await QRCode.toString(data, { margin: 0, type: "svg" });
     if (typeof dataString === "string") {
@@ -25,16 +26,16 @@ async function formatQRCodeImage(data) {
     }
     qrContainer.innerHTML += result;
     const logo = document.createElement("img")
-    logo.setAttribute('src', logoSvg)
-    logo.style = `position: absolute;
+    logo.setAttribute('src', BITIZEN_LOGO_URL)
+    logo.setAttribute('style', `position: absolute;
     background-color: #fff;
     padding: 10px;
-    border-radius: 8px;`
+    border-radius: 8px;`)
     qrContainer.appendChild(logo)
     return qrContainer;
 }
 
-exports.close = function () {
+export function close() {
     if (isMobile()) {
         return;
     }
@@ -45,8 +46,8 @@ exports.close = function () {
     }
 }
 
-exports.open = async function (uri, cb) {
-    uri = BZ_UNIVERSAL_LINK + uri;
+export async function open(uri: string, cb: any) {
+    uri = BZ_UNIVERSAL_LINK + uri.replace('wc:', 'wc?uri=');
 
     if (isMobile()) {
         window.open(uri);
@@ -55,7 +56,7 @@ exports.open = async function (uri, cb) {
 
     const modal = document.createElement("div")
     modal.id = BZ_CONNECTOR_MODAL_ID;
-    modal.style = `z-index: 2147483647;
+    modal.setAttribute('style', `z-index: 2147483647;
     background-color: rgba(0, 0, 0, 0.8);
     width: 100vw;
     height: 100vh;
@@ -64,47 +65,49 @@ exports.open = async function (uri, cb) {
     left: 0;
     display: flex;
     justify-content: center;
-    align-items: center;`;
+    align-items: center;`)
     modal.onclick = () => {
         cb()
-        exports.close()
+        close()
     }
 
-    modal.innerHTML = `<style>@font-face {
-  font-family: 'Roboto';
-  src: url('`+ roboto + `')  format('truetype');
-}</style>`
+    const style = document.createElement('style')
+    style.innerHTML = `@font-face {
+    font-family: 'Roboto';
+    src: url("`+ ROBOTO_TTF_URL + `") format('truetype');
+}`
+    modal.appendChild(style)
 
     const modalContainer = document.createElement("div");
-    modalContainer.style = "width: 500px";
+    modalContainer.setAttribute('style', "width: 500px")
     modalContainer.onclick = (e) => { e.stopPropagation() }
 
     const header = document.createElement("div");
-    header.style = `padding-bottom: 20px;
+    header.setAttribute('style', `padding-bottom: 20px;
     display: flex;
-    justify-content: space-between;`
+    justify-content: space-between;`)
 
     const logo = document.createElement("img")
-    logo.setAttribute('src', bigLogoSvg)
+    logo.setAttribute('src', BIG_LOGO_SVG_URL)
     header.appendChild(logo)
 
     const closeBtn = document.createElement("img")
-    closeBtn.setAttribute('src', closeSvg)
+    closeBtn.setAttribute('src', CLOSE_SVG_URL)
     closeBtn.onclick = () => {
         cb()
-        exports.close()
+        close()
     }
     header.appendChild(closeBtn)
     modalContainer.appendChild(header)
 
     const content = document.createElement("div")
-    content.style = `padding: 30px 50px;
+    content.setAttribute('style', `padding: 30px 50px;
     background: #FFFFFF;
-    border-radius: 24px;`;
+    border-radius: 24px;`)
 
     const title = document.createElement("h1")
     title.innerText = 'Scan QR code with Bitizen Wallet'
-    title.style = `font-style: normal;
+    title.setAttribute('style', `font-style: normal;
     font-family: Roboto;
     font-weight: 700;
     font-size: 20px;
@@ -112,14 +115,14 @@ exports.open = async function (uri, cb) {
     color: #373C44;
     margin-top: unset;
     margin-bottom: 10px;
-    text-align: center;`
+    text-align: center;`)
 
     content.appendChild(title)
     content.appendChild(await formatQRCodeImage(uri))
 
     const dontHaveBitizen = document.createElement("h2")
     dontHaveBitizen.innerText = 'Don’t have Bitizen Wallet?'
-    dontHaveBitizen.style = `font-style: normal;
+    dontHaveBitizen.setAttribute('style', `font-style: normal;
     font-family: Roboto;
     font-weight: 700;
     font-size: 16px;
@@ -127,21 +130,21 @@ exports.open = async function (uri, cb) {
     color: #373C44;
     margin-top: 10px;
     text-align: center;
-    margin-bottom: unset;`
+    margin-bottom: unset;`)
     content.appendChild(dontHaveBitizen)
 
     const downloadLinkContainer = document.createElement("div")
-    downloadLinkContainer.style = `text-align: center;`
+    downloadLinkContainer.setAttribute('style', `text-align: center;`)
     const downloadLink = document.createElement("a")
     downloadLink.href = "https://bitizen.org"
     downloadLink.innerText = 'Download Here'
-    downloadLink.style = `font-style: normal;
+    downloadLink.setAttribute('style', `font-style: normal;
     font-family: Roboto;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     color: #319CFF;
-    text-decoration: unset;`
+    text-decoration: unset;`)
     downloadLinkContainer.appendChild(downloadLink)
     content.appendChild(downloadLinkContainer)
 
