@@ -47,7 +47,7 @@ export function close() {
 }
 
 export async function open(uri: string, cb: any) {
-    uri = BZ_UNIVERSAL_LINK + uri.replace('wc:', 'wc?uri=');
+    uri = BZ_UNIVERSAL_LINK + 'wc?uri=' + uri
 
     if (isMobile()) {
         window.open(uri);
@@ -137,6 +137,7 @@ export async function open(uri: string, cb: any) {
     downloadLinkContainer.setAttribute('style', `text-align: center;`)
     const downloadLink = document.createElement("a")
     downloadLink.href = "https://bitizen.org"
+    downloadLink.target = "_blank"
     downloadLink.innerText = 'Download Here'
     downloadLink.setAttribute('style', `font-style: normal;
     font-family: Roboto;
