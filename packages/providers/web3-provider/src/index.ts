@@ -80,6 +80,12 @@ class BitizenConnectProvider extends ProviderEngine {
   // Connect with a wallet and return the addresses of all available
   // accounts.
   enable = async (): Promise<string[]> => {
+    if ('ethereum' in window && (window as any).ethereum.isBitizen) {
+      if (!('isBitizen' in this)) {
+        Object.assign(this, (window as any).ethereum);
+      }
+      return this.enable();
+    }
     const wc = await this.getWalletConnector();
     if (wc) {
       this.start();

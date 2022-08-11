@@ -1,6 +1,6 @@
 {
   "name": "@bitizenwallet/connector-qrcode-modal",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "QR Code Modal for BitizenWallet Connector",
   "scripts": {
     "clean": "rm -rf dist",
@@ -57,6 +57,7 @@
     "webpack-cli": "3.3.10"
   },
   "dependencies": {
+    "@walletconnect/browser-utils": "^1.8.0",
     "mobile-detect": "^1.4.5",
     "qrcode": "1.4.4"
   }

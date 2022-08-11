@@ -1,5 +1,6 @@
 import QRCode from "qrcode";
 import MobileDetect from "mobile-detect";
+import { saveMobileLinkInfo } from '@walletconnect/browser-utils';
 
 import { BIG_LOGO_SVG_URL } from "./assets/big_logo";
 import { BITIZEN_LOGO_URL } from "./assets/logo";
@@ -50,6 +51,10 @@ export async function open(uri: string, cb: any) {
     uri = BZ_UNIVERSAL_LINK + 'wc?uri=' + uri
 
     if (isMobile()) {
+        saveMobileLinkInfo({
+            name: 'Bitizen',
+            href: uri,
+        })
         window.open(uri);
         return;
     }
@@ -60,7 +65,7 @@ export async function open(uri: string, cb: any) {
     background-color: rgba(0, 0, 0, 0.8);
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
