@@ -65,10 +65,6 @@ class BitizenConnectProvider extends ProviderEngine {
     this.initialize();
   }
 
-  get logoUri() {
-    return 'https://bitizen.org/sdk/assets/logo.png'
-  }
-
   get isWalletConnect() {
     return true;
   }
@@ -451,3 +447,4 @@ class BitizenConnectProvider extends ProviderEngine {
 }
 
 export default BitizenConnectProvider;
+export const logoUri = 'https://bitizen.org/sdk/assets/logo.png';

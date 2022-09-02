@@ -1,6 +1,6 @@
 {
   "name": "@bitizenwallet/connector-web3-provider",
-  "version": "1.8.4",
+  "version": "1.8.6",
   "description": "Web3 Provider for Bitizen Connector",
   "scripts": {
     "clean": "rm -rf dist",
