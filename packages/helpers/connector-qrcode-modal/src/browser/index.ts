@@ -55,7 +55,7 @@ export async function open(uri: string, cb: any) {
             name: 'Bitizen',
             href: uri,
         })
-        window.open(uri);
+        window.location.href = uri;
         return;
     }
 

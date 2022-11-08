@@ -1,6 +1,6 @@
 {
   "name": "@bitizenwallet/connector-qrcode-modal",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "description": "QR Code Modal for BitizenWallet Connector",
   "scripts": {
     "clean": "rm -rf dist",
